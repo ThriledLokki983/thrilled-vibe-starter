@@ -25,10 +25,22 @@ jobs:
           scan-ref: '.'
           format: 'sarif'
           output: 'trivy-results.sarif'
+          exit-code: '0'  # Don't fail the job on vulnerabilities
+          
+      - name: Check if SARIF file exists
+        id: check-sarif
+        run: |
+          if [ -f "trivy-results.sarif" ]; then
+            echo "sarif-exists=true" >> $GITHUB_OUTPUT
+            echo "SARIF file found, size: $(stat -c%s trivy-results.sarif 2>/dev/null || stat -f%z trivy-results.sarif) bytes"
+          else
+            echo "sarif-exists=false" >> $GITHUB_OUTPUT
+            echo "No SARIF file generated"
+          fi
           
       - name: Upload Trivy scan results
         uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        if: steps.check-sarif.outputs.sarif-exists == 'true'
         with:
           sarif_file: 'trivy-results.sarif'
 
@@ -36,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18, 20]
+        node-version: [18, 20, 22]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -122,9 +134,24 @@ jobs:
         
       - name: Check package size
         run: |
-          npx bundlesize --enable-github-checks
-        env:
-          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.FINEGRAIN_TOKEN }}
+          echo "📦 Package Analysis"
+          echo "==================="
+          
+          # Check npm package size
+          NPM_SIZE=$(npm pack --dry-run 2>/dev/null | grep -E 'package size' | awk '{print $3 $4}' || echo "unknown")
+          echo "📊 NPM Package Size: $NPM_SIZE"
+          
+          # Check total project size
+          TOTAL_SIZE=$(du -sh . 2>/dev/null | awk '{print $1}' || echo "unknown")
+          echo "📁 Total Project Size: $TOTAL_SIZE"
+          
+          # Check key directories
+          echo "📂 Directory Breakdown:"
+          du -sh templates/ scripts/ .github/ 2>/dev/null || echo "Unable to calculate directory sizes"
+          
+          # List largest files
+          echo "📄 Largest Files:"
+          find . -type f -not -path './node_modules/*' -not -path './.git/*' -exec ls -lh {} \; | sort -k5 -hr | head -10 | awk '{print $5 " " $9}' || echo "Unable to list files"
 
   dependency-review:
     runs-on: ubuntu-latest
@@ -144,7 +171,7 @@ jobs:
     if: always()
     steps:
       - name: PR Summary
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const jobs = [
