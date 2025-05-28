@@ -38,7 +38,11 @@
     "workflow:release": "node scripts/workflow.js release",
     "workflow:clean": "node scripts/workflow.js clean",
     "workflow:status": "node scripts/workflow.js status",
-    "test:cli": "node test-cli.js"
+    "test:cli": "node test-cli.js",
+    "publish:patch": "node scripts/publish.js patch",
+    "publish:minor": "node scripts/publish.js minor",
+    "publish:major": "node scripts/publish.js major",
+    "publish": "node scripts/publish.js patch"
   },
   "repository": {
     "type": "git",
