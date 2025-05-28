@@ -19,8 +19,13 @@ COPY README.md ./
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S cleanvibe -u 1001
 
-# Change ownership of the app directory
+# Make the CLI globally available (must be done as root)
+RUN npm link
+
+# Change ownership of the app directory to non-root user
 RUN chown -R cleanvibe:nodejs /app
+
+# Switch to non-root user
 USER cleanvibe
 
 # Create volume for output
@@ -29,9 +34,6 @@ VOLUME ["/output"]
 # Set environment variables
 ENV NODE_ENV=production
 ENV OUTPUT_DIR=/output
-
-# Make the CLI globally available
-RUN npm link
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \

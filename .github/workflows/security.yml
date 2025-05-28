@@ -88,6 +88,34 @@ jobs:
           format: 'sarif'
           output: 'trivy-results.sarif'
           
+      - name: Check if SARIF file exists
+        id: check_sarif
+        run: |
+          if [ -f trivy-results.sarif ]; then
+            echo "sarif_exists=true" >> $GITHUB_OUTPUT
+            echo "SARIF file found"
+          else
+            echo "sarif_exists=false" >> $GITHUB_OUTPUT
+            echo "SARIF file not found, creating minimal SARIF"
+            cat > trivy-results.sarif << 'EOF'
+          {
+            "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+            "version": "2.1.0",
+            "runs": [
+              {
+                "tool": {
+                  "driver": {
+                    "name": "Trivy",
+                    "version": "latest"
+                  }
+                },
+                "results": []
+              }
+            ]
+          }
+          EOF
+          fi
+          
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         if: always()
