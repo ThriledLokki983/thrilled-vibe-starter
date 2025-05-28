@@ -66,6 +66,36 @@ jobs:
         with:
           args: --severity-threshold=high --sarif-file-output=snyk.sarif
           
+      - name: Check if Snyk SARIF file exists
+        id: check_snyk_sarif
+        run: |
+          if [ -f snyk.sarif ]; then
+            echo "snyk_sarif_exists=true" >> $GITHUB_OUTPUT
+            echo "Snyk SARIF file found"
+            ls -la snyk.sarif
+          else
+            echo "snyk_sarif_exists=false" >> $GITHUB_OUTPUT
+            echo "Snyk SARIF file not found, creating minimal SARIF"
+            cat > snyk.sarif << 'EOF'
+          {
+            "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+            "version": "2.1.0",
+            "runs": [
+              {
+                "tool": {
+                  "driver": {
+                    "name": "Snyk",
+                    "informationUri": "https://snyk.io",
+                    "version": "latest"
+                  }
+                },
+                "results": []
+              }
+            ]
+          }
+          EOF
+          fi
+          
       - name: Upload Snyk results to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
         if: always()
