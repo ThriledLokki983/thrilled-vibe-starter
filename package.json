@@ -1,6 +1,6 @@
 {
   "name": "@thrilled/clean-vibe",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A PRD generator that provides AI agents with comprehensive instructions for creating well-structured frontend applications",
   "main": "index.js",
   "bin": {

@@ -1,6 +1,24 @@
 {
   "versions": [
     {
+      "version": "1.0.2",
+      "type": "patch",
+      "description": "1 new feature(s)",
+      "date": "2025-05-28T16:02:24.461Z",
+      "commits": 1,
+      "commitDetails": [
+        {
+          "hash": "baec3da",
+          "message": "feat: add comprehensive workflow management system",
+          "author": "Gideon Nimoh",
+          "date": "2025-05-28",
+          "body": "feat: add comprehensive workflow management system"
+        }
+      ],
+      "previousVersion": "1.0.1",
+      "semverIncrease": "patch"
+    },
+    {
       "version": "1.0.1",
       "type": "patch",
       "description": "Initial release with comprehensive CI/CD setup",
@@ -20,24 +38,24 @@
     }
   ],
   "lastRelease": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "patch",
-    "description": "Initial release with comprehensive CI/CD setup",
-    "date": "2025-05-28T15:50:22.357Z",
+    "description": "1 new feature(s)",
+    "date": "2025-05-28T16:02:24.461Z",
     "commits": 1,
     "commitDetails": [
       {
-        "hash": "f69d66c",
-        "message": "feat: initial commit with comprehensive CI/CD setup",
+        "hash": "baec3da",
+        "message": "feat: add comprehensive workflow management system",
         "author": "Gideon Nimoh",
         "date": "2025-05-28",
-        "body": "feat: initial commit with comprehensive CI/CD setup"
+        "body": "feat: add comprehensive workflow management system"
       }
     ],
-    "previousVersion": "1.0.0",
+    "previousVersion": "1.0.1",
     "semverIncrease": "patch"
   },
-  "totalReleases": 1,
+  "totalReleases": 2,
   "created": "2025-05-28T15:48:51.572Z",
-  "updated": "2025-05-28T15:50:22.357Z"
+  "updated": "2025-05-28T16:02:24.461Z"
 }
