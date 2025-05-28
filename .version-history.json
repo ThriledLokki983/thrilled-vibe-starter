@@ -1,6 +1,43 @@
 {
-  "versions": [],
-  "lastRelease": null,
-  "totalReleases": 0,
-  "created": "2025-05-28T15:48:51.572Z"
+  "versions": [
+    {
+      "version": "1.0.1",
+      "type": "patch",
+      "description": "Initial release with comprehensive CI/CD setup",
+      "date": "2025-05-28T15:50:22.357Z",
+      "commits": 1,
+      "commitDetails": [
+        {
+          "hash": "f69d66c",
+          "message": "feat: initial commit with comprehensive CI/CD setup",
+          "author": "Gideon Nimoh",
+          "date": "2025-05-28",
+          "body": "feat: initial commit with comprehensive CI/CD setup"
+        }
+      ],
+      "previousVersion": "1.0.0",
+      "semverIncrease": "patch"
+    }
+  ],
+  "lastRelease": {
+    "version": "1.0.1",
+    "type": "patch",
+    "description": "Initial release with comprehensive CI/CD setup",
+    "date": "2025-05-28T15:50:22.357Z",
+    "commits": 1,
+    "commitDetails": [
+      {
+        "hash": "f69d66c",
+        "message": "feat: initial commit with comprehensive CI/CD setup",
+        "author": "Gideon Nimoh",
+        "date": "2025-05-28",
+        "body": "feat: initial commit with comprehensive CI/CD setup"
+      }
+    ],
+    "previousVersion": "1.0.0",
+    "semverIncrease": "patch"
+  },
+  "totalReleases": 1,
+  "created": "2025-05-28T15:48:51.572Z",
+  "updated": "2025-05-28T15:50:22.357Z"
 }
