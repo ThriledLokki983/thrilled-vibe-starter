@@ -1,0 +1,49 @@
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+
+# Development files
+test.js
+*.test.js
+*.spec.js
+
+# Documentation (except README)
+docs/
+*.md
+!README.md
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Coverage reports
+coverage/
+
+# Environment files
+.env*
+!.env.example
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/

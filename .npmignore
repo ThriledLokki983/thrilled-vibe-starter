@@ -1,0 +1,28 @@
+# Development files
+.git/
+.gitignore
+*.log
+test/
+tests/
+.nyc_output/
+coverage/
+
+# Documentation (except README.md)
+docs/
+.github/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test output
+test-output/
+
+# Don't include the generated instructions in the package
+.github/instructions.md

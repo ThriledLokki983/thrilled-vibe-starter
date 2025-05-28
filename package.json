@@ -1,0 +1,81 @@
+{
+  "name": "@thrilled/clean-vibe",
+  "version": "1.0.0",
+  "description": "A PRD generator that provides AI agents with comprehensive instructions for creating well-structured frontend applications",
+  "main": "index.js",
+  "bin": {
+    "clean-vibe": "./index.js",
+    "vibe": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js",
+    "docker:build": "docker build -t clean-vibe:latest .",
+    "docker:run": "docker run --rm -v $(pwd)/output:/output clean-vibe:latest",
+    "docker:test": "docker run --rm clean-vibe:latest --version",
+    "release": "node scripts/release.js",
+    "release:patch": "node scripts/release.js patch",
+    "release:minor": "node scripts/release.js minor",
+    "release:major": "node scripts/release.js major",
+    "version:patch": "node scripts/version-manager.js patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "version:check": "node scripts/version-check.js",
+    "version:status": "node scripts/version-manager.js status",
+    "version:suggest": "node scripts/version-manager.js suggest",
+    "version:bump": "node scripts/version-manager.js bump",
+    "version:history": "node scripts/version-manager.js history",
+    "format": "prettier --write '**/*.{js,json,md}'",
+    "format:check": "prettier --check '**/*.{js,json,md}'",
+    "dev:setup": "node scripts/dev.js setup",
+    "dev:check": "node scripts/dev.js check",
+    "dev:test": "node scripts/dev.js test",
+    "dev:clean": "node scripts/dev.js clean",
+    "dev:format": "node scripts/dev.js format",
+    "dev:docker": "node scripts/dev.js docker"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThriledLokki983/thrilled-vibe-starter.git"
+  },
+  "keywords": [
+    "prd",
+    "react",
+    "frontend",
+    "ai",
+    "generator",
+    "typescript",
+    "development",
+    "clean",
+    "vibe"
+  ],
+  "author": "ThriledLokki983",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ThriledLokki983/thrilled-vibe-starter/issues"
+  },
+  "homepage": "https://github.com/ThriledLokki983/thrilled-vibe-starter#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "templates/",
+    "scripts/",
+    "index.js",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "Dockerfile",
+    ".dockerignore"
+  ],
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6",
+    "semver": "^7.7.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
