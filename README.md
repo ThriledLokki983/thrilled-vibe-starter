@@ -176,6 +176,42 @@ The generated `instructions.md` file is designed to be shared with AI developmen
 
 Simply include the instructions file in your prompt or conversation context.
 
+## Version Management
+
+Clean Vibe includes a comprehensive version management system with smart release automation:
+
+### Quick Start
+```bash
+# Check version status and get smart suggestions
+npm run version:status
+
+# Create a quick patch release
+npm run version:patch "Fix critical bug"
+
+# Interactive version bump with full options
+npm run version:bump
+
+# View complete version history
+npm run version:history
+```
+
+### Features
+- **🤖 Smart Suggestions**: Analyzes commits to suggest appropriate version bumps
+- **📊 Status Dashboard**: Comprehensive overview of version status and history
+- **🏷️ Automated Tagging**: Creates git tags with detailed release information
+- **📚 Enhanced Changelog**: Generates categorized changelog with commit links
+- **🔍 Version History**: Tracks complete release history with analytics
+
+### Available Commands
+- `npm run version:status` - Show version dashboard
+- `npm run version:suggest` - Get smart version suggestion  
+- `npm run version:patch "description"` - Quick patch release
+- `npm run version:bump` - Interactive version bump
+- `npm run version:history` - Show version history
+- `npm run release` - Full release workflow with CI/CD
+
+For detailed documentation, see [Version Management Guide](docs/VERSION_MANAGEMENT.md).
+
 ## Contributing
 
 1. Fork the repository

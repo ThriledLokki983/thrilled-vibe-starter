@@ -32,7 +32,13 @@
     "dev:test": "node scripts/dev.js test",
     "dev:clean": "node scripts/dev.js clean",
     "dev:format": "node scripts/dev.js format",
-    "dev:docker": "node scripts/dev.js docker"
+    "dev:docker": "node scripts/dev.js docker",
+    "workflow:dev": "node scripts/workflow.js dev",
+    "workflow:test": "node scripts/workflow.js test",
+    "workflow:release": "node scripts/workflow.js release",
+    "workflow:clean": "node scripts/workflow.js clean",
+    "workflow:status": "node scripts/workflow.js status",
+    "test:cli": "node test-cli.js"
   },
   "repository": {
     "type": "git",
